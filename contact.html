@@ -1,22 +1,45 @@
-<nav> </nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | ShiftGrid</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Shift<span>Grid</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<main class="container" style="max-width: 600px;">
-    <h1>Get in Touch</h1>
-    <p>Have questions about ShiftGrid or need help with a custom configuration? We're here to help.</p>
+    <main class="container" style="max-width: 600px;">
+        <h1>Contact Us</h1>
+        <p>Need help setting up your first project or have a feature request?</p>
 
-    <form style="display: grid; gap: 1.5rem; margin-top: 2rem;">
-        <div>
-            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Name</label>
-            <input type="text" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px;">
-        </div>
-        <div>
-            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Email</label>
-            <input type="email" style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px;">
-        </div>
-        <div>
-            <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Message</label>
-            <textarea style="width: 100%; padding: 0.75rem; border: 1px solid var(--border); border-radius: 6px; height: 150px;"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Send Message</button>
-    </form>
-</main>
+        <form style="display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0;">
+            <div>
+                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Name</label>
+                <input type="text" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem;">
+            </div>
+            <div>
+                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Email</label>
+                <input type="email" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem;">
+            </div>
+            <div>
+                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Message</label>
+                <textarea style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; height: 150px;"></textarea>
+            </div>
+            <button type="submit" class="btn" style="border: none; cursor: pointer;">Send Message</button>
+        </form>
+    </main>
+
+    <footer><div class="container">&copy; 2026 ShiftGrid.app</div></footer>
+</body>
+</html>
