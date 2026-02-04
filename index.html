@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShiftGrid | Home</title>
+    <title>ShiftGrid | Intelligent Lab Scheduling</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -20,20 +20,31 @@
     </nav>
 
     <main class="container">
-        <h1>Intelligent Lab Scheduling</h1>
-        <p>ShiftGrid is a desktop application for managing shift assignments across multiple labs and teams. It eliminates scheduling conflicts and automates the manual labor of roster management.</p>
-        
-        <h2>Core Capabilities</h2>
-        <div class="grid">
-            <div class="card" style="text-align: left; padding: 1.5rem;">
-                <h3>Flexible Config</h3>
-                <p style="font-size: 0.95rem;">Set lab hours, shift lengths, and specific equipment capabilities.</p>
+        <header style="padding: 3rem 0; text-align: center;">
+            <h1>ShiftGrid User Manual</h1>
+            <p>Master the most powerful shift assignment tool for multi-lab environments.</p>
+        </header>
+
+        <section class="grid">
+            <div class="card">
+                <h3>Lab Configuration</h3>
+                <p>Define operating hours, shift lengths, and capabilities (e.g., "High Security") to ensure smart placement.</p>
             </div>
-            <div class="card" style="text-align: left; padding: 1.5rem;">
+            <div class="card">
                 <h3>Auto-Scheduling</h3>
-                <p style="font-size: 0.95rem;">Intelligent drag-and-drop with built-in conflict detection.</p>
+                <p>Intelligent algorithm respects "Late-to-Early" rules and POC availability conflicts automatically.</p>
             </div>
-        </div>
+        </section>
+
+        <section style="margin-top: 2rem; padding: 1.5rem; background: var(--light-bg); border-radius: 12px;">
+            <h3>Quick Start Workflow</h3>
+            <ol style="margin-left: 1.5rem; margin-top: 1rem;">
+                <li>Configure Labs & Shifts</li>
+                <li>Build Roster & Import Availability</li>
+                <li>Create Teams & Define Demands</li>
+                <li>Generate & Auto-Schedule</li>
+            </ol>
+        </section>
     </main>
 
     <footer><div class="container">&copy; 2026 ShiftGrid.app</div></footer>
