@@ -1,69 +1,63 @@
-/* Sidebar Layout Logic */
-.manual-grid {
-    display: flex;
-    gap: 4rem;
-    padding-top: 3rem;
+:root {
+    --primary: #2563eb;
+    --dark: #0f172a;
+    --text: #334155;
+    --border: #e2e8f0;
+    --light-bg: #f8fafc;
 }
 
-.manual-nav {
-    flex: 0 0 250px;
-    position: sticky;
-    top: 100px;
-    height: fit-content;
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: #ffffff;
 }
 
-.manual-nav h3 {
-    text-transform: uppercase;
-    font-size: 0.75rem;
-    letter-spacing: 1px;
-    color: #94a3b8;
+.container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+/* Navigation */
+nav { padding: 1.5rem 0; border-bottom: 1px solid var(--border); background: #fff; }
+nav .container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 800; color: var(--dark); text-decoration: none; }
+.logo span { color: var(--primary); }
+.nav-links { list-style: none; display: flex; gap: 1.5rem; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 500; }
+.nav-links a.active { color: var(--primary); font-weight: 700; }
+
+/* Content Sections */
+h1 { font-size: 2.5rem; color: var(--dark); margin: 2rem 0 1rem; }
+h2 { color: var(--dark); }
+
+/* Download Page Specifics */
+.download-hero { text-align: center; padding: 3rem 0; }
+.download-card {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    padding: 3rem;
+    border-radius: 16px;
+    margin: 2rem auto;
+    max-width: 500px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+.version-badge {
+    background: #dcfce7;
+    color: #166534;
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 700;
     margin-bottom: 1rem;
 }
+.btn { padding: 0.8rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600; display: inline-block; transition: 0.2s; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+.btn-large { font-size: 1.2rem; padding: 1rem 2rem; width: 100%; margin: 1.5rem 0; }
+.file-info { font-size: 0.85rem; color: #64748b; }
 
-.manual-nav ul {
-    list-style: none;
-    border-left: 2px solid #e2e8f0;
-}
+.changelog { margin-top: 3rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+.changelog ul { margin-left: 1.5rem; margin-top: 1rem; }
 
-.manual-nav li a {
-    display: block;
-    padding: 0.5rem 1.5rem;
-    text-decoration: none;
-    color: #64748b;
-    font-weight: 500;
-    margin-left: -2px;
-}
-
-.manual-nav li a:hover, .manual-nav li a.active {
-    color: var(--primary);
-    border-left: 2px solid var(--primary);
-}
-
-.manual-content {
-    flex: 1;
-}
-
-.manual-content article {
-    margin-bottom: 5rem;
-    scroll-margin-top: 120px;
-}
-
-.manual-content h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: var(--dark);
-}
-
-/* Specific UI Components */
-.workflow-box {
-    background: #f1f5f9;
-    padding: 1.5rem;
-    border-radius: 8px;
-    margin-top: 1.5rem;
-    border-left: 4px solid var(--primary);
-}
-
-.workflow-box ol {
-    margin-top: 0.5rem;
-    margin-left: 1.25rem;
-}
+footer { padding: 4rem 0 2rem; text-align: center; color: #94a3b8; font-size: 0.9rem; }
