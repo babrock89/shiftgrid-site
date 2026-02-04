@@ -1,82 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ShiftGrid | Intelligent Lab Scheduling</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-</head>
 <body>
     <nav class="navbar">
         <div class="container">
             <div class="logo">Shift<span>Grid</span></div>
             <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
-                <li><a href="#docs">User Guide</a></li>
-                <li><a href="https://github.com/babrock89" class="btn-outline">GitHub</a></li>
+                <li><a href="#manual">User Manual</a></li>
+                <li><a href="https://github.com/babrock89/shiftgrid-site" class="btn-github"><i class="fab fa-github"></i> GitHub</a></li>
             </ul>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="container text-center">
-            <h1>Automate Your Lab Scheduling</h1>
-            <p>A high-performance desktop application for managing complex shifts, team availability, and lab demands.</p>
+        <div class="container">
+            <h1>Precision Scheduling for Modern Labs</h1>
+            <p>ShiftGrid is a desktop power-tool that transforms complex roster demands into optimized schedules in seconds.</p>
             <div class="hero-btns">
-                <a href="#download" class="btn-primary">Download v1.0.1</a>
-                <a href="#docs" class="btn-secondary">Read Manual</a>
+                <a href="#" class="btn-primary">Download v1.0.1</a>
+                <a href="#manual" class="btn-outline">Browse Docs</a>
             </div>
         </div>
     </header>
 
-    <section id="features" class="features">
+    <section id="manual" class="manual-section">
         <div class="container">
-            <h2 class="section-title">Why ShiftGrid?</h2>
-            <div class="feature-grid">
-                <div class="card">
-                    <h3>Intelligent Auto-Schedule</h3>
-                    <p>Respects lab capabilities, team limits, and "late-to-early" shift rules automatically.</p>
-                </div>
-                <div class="card">
-                    <h3>Smart Availability</h3>
-                    <p>Import PTO and unavailability calendars via CSV. ShiftGrid catches conflicts before you schedule.</p>
-                </div>
-                <div class="card">
-                    <h3>Demand-Driven</h3>
-                    <p>Define exactly what your teams need and let the engine generate the backlog for you.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="docs" class="docs">
-        <div class="container">
-            <h2>User Manual Summary</h2>
-            <div class="docs-wrapper">
-                <aside class="docs-nav">
+            <div class="manual-grid">
+                <aside class="manual-nav">
+                    <h3>Documentation</h3>
                     <ul>
-                        <li><a href="#getting-started">Getting Started</a></li>
+                        <li><a href="#intro" class="active">Introduction</a></li>
                         <li><a href="#labs">Labs Configuration</a></li>
-                        <li><a href="#roster">Roster Management</a></li>
+                        <li><a href="#roster">Roster & Availability</a></li>
+                        <li><a href="#demand">Shift Demands</a></li>
                         <li><a href="#auto-schedule">Auto-Scheduling</a></li>
+                        <li><a href="#import">Import/Export</a></li>
                     </ul>
                 </aside>
-                <article class="docs-content">
-                    <div id="getting-started">
-                        <h3>Getting Started</h3>
-                        <p>Configure your Labs, add team members to the Roster, define Shift Demands, and use the Auto-Schedule tool to populate your calendar.</p>
-                    </div>
+
+                <main class="manual-content">
+                    <article id="intro">
+                        <h2>Introduction</h2>
+                        <p>ShiftGrid manages assignments across multiple labs and teams. It provides flexible lab configuration, POC tracking, and drag-and-drop schedule management.</p>
+                        <div class="workflow-box">
+                            <strong>Recommended Workflow:</strong>
+                            <ol>
+                                <li>Configure Labs & Shifts</li>
+                                <li>Build Roster & Import Availability</li>
+                                <li>Create Teams & Define Demands</li>
+                                <li>Generate Backlog & Auto-Schedule</li>
+                            </ol>
+                        </div>
                     </article>
+
+                    <article id="labs">
+                        <h2>Labs Configuration</h2>
+                        <p>Configure labs with operating hours, shift lengths, and capabilities. Capabilities (e.g., "High Security") ensure shifts are only placed in qualified labs.</p>
+                        
+                    </article>
+
+                    <article id="roster">
+                        <h2>Roster & Availability</h2>
+                        <p>Manage all team members in one place. ShiftGrid supports <strong>Calendar Matrix</strong> imports to sync PTO and unavailability dates directly from spreadsheets.</p>
+                    </article>
+
+                    <article id="demand">
+                        <h2>Shift Demands</h2>
+                        <p>Demands define how many shifts each team needs. Set priorities and required capabilities to guide the scheduling engine.</p>
+                    </article>
+
+                    <article id="auto-schedule">
+                        <h2>Auto-Scheduling Engine</h2>
+                        <p>Our algorithm respects hard constraints: lab hours, POC availability, and the "Late-to-Early" rest rule.</p>
+                        
+                    </article>
+                </main>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 ShiftGrid. Managed through Netlify.</p>
+            <p>&copy; 2026 ShiftGrid. Built for efficiency.</p>
         </div>
     </footer>
 </body>
-</html>
