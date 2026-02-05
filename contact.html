@@ -23,21 +23,48 @@
         <h1>Contact Us</h1>
         <p>Need help setting up your first project or have a feature request?</p>
 
-        <form style="display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0;">
-            <div>
-                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Name</label>
-                <input type="text" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem;">
-            </div>
-            <div>
-                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Email</label>
-                <input type="email" style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem;">
-            </div>
-            <div>
-                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Message</label>
-                <textarea style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; height: 150px;"></textarea>
-            </div>
-            <button type="submit" class="btn" style="border: none; cursor: pointer;">Send Message</button>
+        <form 
+            name="contact"
+            method="POST"
+            data-netlify="true"
+            style="display: flex; flex-direction: column; gap: 1.5rem; margin: 2rem 0;"
+            >
+                <input type="hidden" name="form-name" value="contact">
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Name</label>
+                    <input 
+                    type="text" 
+                    name="name"
+                    required
+                    style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem;"
+                    >
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Email</label>
+                    <input 
+                    type="email" 
+                    name="email"
+                    required
+                    style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem;"
+                    >
+                </div>
+
+                <div>
+                    <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Message</label>
+                    <textarea 
+                    name="message"
+                    required
+                    style="width: 100%; padding: 0.8rem; border: 1px solid var(--border); border-radius: 8px; font-size: 1rem; height: 150px;"
+                    ></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="border: none; cursor: pointer;">
+                Send Message
+                </button>
         </form>
+
     </main>
 
     <footer><div class="container">&copy; 2026 ShiftGrid.app</div></footer>
