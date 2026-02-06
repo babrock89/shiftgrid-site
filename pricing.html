@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | ShiftGrid</title>
+    <meta name="description" content="ShiftGrid pricing plans. Start with a free 14-day trial, then choose the tier that fits your needs.">
+    <meta property="og:title" content="ShiftGrid Pricing">
+    <meta property="og:description" content="Simple, transparent pricing for constraint-aware shift scheduling.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +17,7 @@
             <a href="index.html" class="logo">Shift<span>Grid</span></a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
                 <li><a href="download.html">Download</a></li>
                 <li><a href="pricing.html" class="active">Pricing</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -21,38 +27,135 @@
 
     <main class="container">
         <header style="text-align: center; padding: 3rem 0;">
-            <h1>Simple, Honest Pricing</h1>
-            <p>
-                No per-user fees. No payroll features. Just scheduling that works.
+            <h1>Simple, Transparent Pricing</h1>
+            <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                Start with a free 14-day trial. No credit card required.
+                Choose the tier that matches the number of assets you need to schedule.
             </p>
         </header>
 
-        <div class="grid">
-            <div class="card">
-                <h2 style="margin-top:0;">Standard</h2>
-                <p style="font-size: 2.5rem; font-weight: 800; color: var(--dark); margin: 1rem 0;">$0</p>
-                <ul style="list-style: none; margin-bottom: 2rem; text-align: left;">
-                    <li>✓ Local project storage</li>
-                    <li>✓ Constraint-aware scheduling engine</li>
-                    <li>✓ CSV import and export</li>
+        <div class="pricing-grid">
+            <!-- Trial -->
+            <div class="pricing-card">
+                <h3>Trial</h3>
+                <div class="pricing-price">Free</div>
+                <p style="color: var(--text-light); font-size: 0.9rem;">14 days, full features</p>
+                <ul class="pricing-features">
+                    <li>All features unlocked</li>
+                    <li>Unlimited assets during trial</li>
+                    <li>No account required</li>
+                    <li>No credit card required</li>
                 </ul>
-                <a href="download.html" class="btn">Download</a>
+                <a href="download.html" class="btn" style="width: 100%;">Download</a>
             </div>
 
-            <div class="card" style="border: 2px solid var(--primary); position: relative;">
-                <span style="position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 2px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: bold;">ENTERPRISE</span>
-                <h2 style="margin-top:0;">Pro</h2>
-                <p style="font-size: 2.5rem; font-weight: 800; color: var(--dark); margin: 1rem 0;">Custom</p>
-                <ul style="list-style: none; margin-bottom: 2rem; text-align: left;">
-                    <li>✓ Multi-site and multi-team support</li>
-                    <li>✓ Advanced constraint logic</li>
-                    <li>✓ Integration and onboarding support</li>
+            <!-- Tier A -->
+            <div class="pricing-card featured">
+                <span class="pricing-badge">MOST POPULAR</span>
+                <h3>Starter</h3>
+                <div class="pricing-price">$199 <span>/year</span></div>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Up to 3 assets</p>
+                <ul class="pricing-features">
+                    <li>All scheduling features</li>
+                    <li>Auto-scheduler with diagnostics</li>
+                    <li>CSV import & export</li>
+                    <li>Unlimited teams & members</li>
+                    <li>All updates included</li>
                 </ul>
-                <a href="contact.html" class="btn">Contact</a>
+                <a href="contact.html" class="btn" style="width: 100%;">Get License</a>
+            </div>
+
+            <!-- Tier B -->
+            <div class="pricing-card">
+                <h3>Professional</h3>
+                <div class="pricing-price">$449 <span>/year</span></div>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Up to 6 assets</p>
+                <ul class="pricing-features">
+                    <li>Everything in Starter</li>
+                    <li>6 assets (labs, rooms, equipment)</li>
+                    <li>Priority support</li>
+                    <li>All updates included</li>
+                </ul>
+                <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Get License</a>
             </div>
         </div>
+
+        <!-- Enterprise -->
+        <div style="max-width: 600px; margin: 3rem auto; text-align: center;">
+            <div class="card">
+                <h3>Enterprise</h3>
+                <div class="pricing-price">$999 <span>/year</span></div>
+                <p style="color: var(--text-light); font-size: 0.9rem;">Unlimited assets</p>
+                <ul class="pricing-features" style="text-align: left; max-width: 300px; margin: 1.5rem auto;">
+                    <li>Everything in Professional</li>
+                    <li>Unlimited assets</li>
+                    <li>Priority support</li>
+                    <li>All updates included</li>
+                </ul>
+                <a href="contact.html" class="btn" style="width: 100%; max-width: 200px;">Get License</a>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <section style="margin-top: 4rem;">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">What is an "asset"?</h4>
+                    <p style="color: var(--text-light);">
+                        An asset is any resource you schedule shifts for — a lab, room, piece of equipment,
+                        workstation, or time block. The tier limits how many assets you can create in a project.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">Is this a subscription?</h4>
+                    <p style="color: var(--text-light);">
+                        Yes. ShiftGrid uses annual licenses. Your subscription includes all updates and
+                        new features released during the year. An active license is required to use
+                        the software.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">Can I upgrade my tier later?</h4>
+                    <p style="color: var(--text-light);">
+                        Yes. Contact us to upgrade from Starter to Professional or Enterprise. We'll
+                        credit your existing license toward the upgrade cost.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">What happens when my trial or license expires?</h4>
+                    <p style="color: var(--text-light);">
+                        An active license is required to use ShiftGrid. When your trial or license expires,
+                        you'll need to purchase or renew to continue using the software. Your project
+                        files are stored locally and are never deleted.
+                    </p>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <h4 style="margin-bottom: 0.5rem;">Is there a limit on teams or team members?</h4>
+                    <p style="color: var(--text-light);">
+                        No. All tiers support unlimited teams, roster members, and shift demands.
+                        Only the number of assets is limited by tier.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2>Ready to Try ShiftGrid?</h2>
+            <p>Download now and start your free 14-day trial.</p>
+            <a href="download.html" class="btn">Download for Windows</a>
+        </section>
     </main>
 
-    <footer><div class="container">&copy; 2026 ShiftGrid.app</div></footer>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShiftGrid.app</p>
+        </div>
+    </footer>
 </body>
 </html>
