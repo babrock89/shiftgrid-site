@@ -1,9 +1,12 @@
 :root {
     --primary: #2563eb;
+    --primary-dark: #1d4ed8;
     --dark: #0f172a;
     --text: #334155;
+    --text-light: #64748b;
     --border: #e2e8f0;
     --light-bg: #f8fafc;
+    --success: #16a34a;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -16,24 +19,25 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-.container { 
-    max-width: 1000px; 
-    margin: 0 auto; 
-    padding: 0 1.5rem; 
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 /* --- RESPONSIVE NAVIGATION --- */
-nav { 
-    padding: 1rem 0; 
-    border-bottom: 1px solid var(--border); 
+nav {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
     background: #fff;
-    sticky: top;
+    position: sticky;
+    top: 0;
     z-index: 100;
 }
 
-nav .container { 
-    display: flex; 
-    flex-direction: column; /* Stack on mobile */
+nav .container {
+    display: flex;
+    flex-direction: column;
     align-items: center;
     gap: 1rem;
 }
@@ -41,47 +45,138 @@ nav .container {
 .logo { font-size: 1.5rem; font-weight: 800; color: var(--dark); text-decoration: none; }
 .logo span { color: var(--primary); }
 
-.nav-links { 
-    list-style: none; 
-    display: flex; 
-    gap: 1rem; 
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
     font-size: 0.9rem;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
-/* Desktop Navigation Adjustment */
 @media (min-width: 768px) {
     nav .container { flex-direction: row; justify-content: space-between; }
     .nav-links { gap: 2rem; font-size: 1rem; }
 }
 
 .nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: 0.2s; }
+.nav-links a:hover { color: var(--primary); }
 .nav-links a.active { color: var(--primary); font-weight: 700; }
 
 /* --- RESPONSIVE TYPOGRAPHY --- */
-h1 { 
-    font-size: 2rem; /* Smaller for mobile */
-    color: var(--dark); 
-    margin: 2rem 0 1rem; 
-    line-height: 1.2; 
+h1 {
+    font-size: 2rem;
+    color: var(--dark);
+    margin: 2rem 0 1rem;
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 1.5rem;
+    color: var(--dark);
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.1rem;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+h4 {
+    font-size: 1rem;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
 }
 
 @media (min-width: 768px) {
-    h1 { font-size: 3rem; } /* Larger for desktop */
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.25rem; }
+}
+
+/* --- HERO SECTION --- */
+.hero {
+    padding: 3rem 0 4rem;
+    text-align: center;
+}
+
+.hero h1 {
+    margin-bottom: 1.5rem;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-light);
+    max-width: 650px;
+    margin: 0 auto 2rem;
+}
+
+.hero-cta {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* --- BUTTONS --- */
+.btn {
+    display: inline-block;
+    text-align: center;
+    padding: 0.8rem 1.6rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    background: var(--primary);
+    color: white;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-secondary:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-large {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* --- SECTIONS --- */
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.features-section,
+.workflow-section,
+.constraints-section {
+    padding: 3rem 0;
 }
 
 /* --- RESPONSIVE GRID --- */
-.grid { 
-    display: grid; 
-    grid-template-columns: 1fr; /* 1 column on mobile */
-    gap: 1.5rem; 
-    margin: 2rem 0; 
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin: 2rem 0;
 }
 
 @media (min-width: 768px) {
-    .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); } /* Side-by-side on desktop */
+    .grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-/* Card Styling */
+/* --- CARDS --- */
 .card {
     border: 1px solid var(--border);
     padding: 2rem;
@@ -89,15 +184,328 @@ h1 {
     background: var(--light-bg);
 }
 
-.btn { 
-    display: block; 
-    text-align: center;
-    padding: 0.8rem 1.6rem; 
-    border-radius: 8px; 
-    text-decoration: none; 
-    font-weight: 600; 
-    background: var(--primary); 
-    color: white;
+.card-icon {
+    color: var(--primary);
+    margin-bottom: 1rem;
 }
 
-footer { padding: 3rem 0; border-top: 1px solid var(--border); text-align: center; color: #94a3b8; font-size: 0.8rem; }
+.card h3 {
+    margin-bottom: 0.75rem;
+}
+
+/* --- WORKFLOW STEPS --- */
+.workflow-steps {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .workflow-steps {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.workflow-step {
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0 auto 1rem;
+}
+
+.workflow-step p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* --- CONSTRAINTS GRID --- */
+.constraints-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 768px) {
+    .constraints-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .constraints-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.constraint-item {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+}
+
+.constraint-item strong {
+    display: block;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
+}
+
+.constraint-item span {
+    font-size: 0.875rem;
+    color: var(--text-light);
+}
+
+/* --- CTA SECTION --- */
+.cta-section {
+    text-align: center;
+    padding: 4rem 2rem;
+    background: var(--light-bg);
+    border-radius: 12px;
+    margin: 3rem 0;
+}
+
+.cta-section h2 {
+    margin-bottom: 0.5rem;
+}
+
+.cta-section p {
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+}
+
+/* --- PRICING CARDS --- */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .pricing-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.pricing-card {
+    border: 1px solid var(--border);
+    padding: 2rem;
+    border-radius: 12px;
+    background: var(--light-bg);
+    text-align: center;
+    position: relative;
+}
+
+.pricing-card.featured {
+    border: 2px solid var(--primary);
+    transform: scale(1.02);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.pricing-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.pricing-price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin: 1rem 0;
+}
+
+.pricing-price span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+.pricing-features {
+    list-style: none;
+    text-align: left;
+    margin: 1.5rem 0;
+}
+
+.pricing-features li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+/* --- FEATURES PAGE --- */
+.feature-detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 768px) {
+    .feature-detail {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    .feature-detail:nth-child(even) .feature-content {
+        order: 2;
+    }
+}
+
+.feature-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.feature-content p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.feature-content ul {
+    margin-left: 1.25rem;
+    color: var(--text-light);
+}
+
+.feature-content li {
+    margin-bottom: 0.5rem;
+}
+
+.feature-image {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    color: var(--text-light);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- DOWNLOAD PAGE --- */
+.download-card {
+    max-width: 500px;
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.version-badge {
+    background: #dcfce7;
+    color: #166534;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.download-meta {
+    margin-top: 1rem;
+    font-size: 0.8rem;
+    color: var(--text-light);
+}
+
+.requirements {
+    text-align: left;
+    margin-top: 4rem;
+}
+
+.requirements ul {
+    margin-left: 1.5rem;
+    margin-top: 1rem;
+    color: var(--text-light);
+}
+
+.requirements li {
+    margin-bottom: 0.5rem;
+}
+
+/* --- CONTACT FORM --- */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.form-group textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+/* --- FOOTER --- */
+footer {
+    padding: 3rem 0;
+    border-top: 1px solid var(--border);
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+footer a {
+    color: var(--text-light);
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: var(--primary);
+}
+
+/* --- UTILITY --- */
+.text-center { text-align: center; }
+.mt-2 { margin-top: 2rem; }
+.mb-2 { margin-bottom: 2rem; }

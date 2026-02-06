@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features | ShiftGrid</title>
+    <meta name="description" content="ShiftGrid features: drag-and-drop scheduling, auto-scheduler, team availability calendars, CSV import/export, and constraint-aware logic.">
+    <meta property="og:title" content="ShiftGrid Features">
+    <meta property="og:description" content="Explore ShiftGrid's powerful scheduling features: drag-and-drop, auto-scheduler, availability calendars, and more.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">Shift<span>Grid</span></a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html" class="active">Features</a></li>
+                <li><a href="download.html">Download</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header style="text-align: center; padding: 3rem 0;">
+            <h1>Features</h1>
+            <p style="color: var(--text-light); max-width: 600px; margin: 0 auto;">
+                ShiftGrid is built for teams that share limited resources and need schedules
+                that respect real-world constraints.
+            </p>
+        </header>
+
+        <!-- Feature 1: Visual Schedule Grid -->
+        <div class="feature-detail">
+            <div class="feature-content">
+                <h3>Visual Schedule Grid</h3>
+                <p>
+                    See your entire schedule at a glance. The grid displays assets as rows and days
+                    as columns, with each cell showing available shift slots and their utilization.
+                </p>
+                <ul>
+                    <li>Color-coded shifts by team</li>
+                    <li>Utilization percentages per day</li>
+                    <li>Clear visibility of open slots</li>
+                    <li>Configurable date range</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <span>[Schedule Grid Screenshot]</span>
+            </div>
+        </div>
+
+        <!-- Feature 2: Drag-and-Drop -->
+        <div class="feature-detail">
+            <div class="feature-content">
+                <h3>Drag-and-Drop Scheduling</h3>
+                <p>
+                    Drag shifts from the backlog to the schedule, or move them between days and assets.
+                    Incompatible placements are automatically blocked.
+                </p>
+                <ul>
+                    <li>Drag from backlog to schedule</li>
+                    <li>Move shifts between days</li>
+                    <li>Incompatible assets are greyed out</li>
+                    <li>Instant visual feedback</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <span>[Drag-and-Drop Screenshot]</span>
+            </div>
+        </div>
+
+        <!-- Feature 3: Auto-Scheduler -->
+        <div class="feature-detail">
+            <div class="feature-content">
+                <h3>Auto-Scheduler</h3>
+                <p>
+                    One click to schedule all backlog shifts while respecting every constraint.
+                    Choose between two scheduling modes based on your needs.
+                </p>
+                <ul>
+                    <li><strong>Spread Mode</strong> — distributes shifts evenly across the schedule period</li>
+                    <li><strong>Compress Mode</strong> — packs shifts as densely as possible</li>
+                    <li>Respects all constraints automatically</li>
+                    <li>Configurable consecutive day limits</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <span>[Auto-Scheduler Screenshot]</span>
+            </div>
+        </div>
+
+        <!-- Feature 4: Diagnostics -->
+        <div class="feature-detail">
+            <div class="feature-content">
+                <h3>Auto-Scheduler Diagnostics</h3>
+                <p>
+                    When shifts can't be placed, ShiftGrid tells you exactly why. The diagnostics
+                    modal breaks down failures by reason and by team.
+                </p>
+                <ul>
+                    <li>Summary of placed vs. failed shifts</li>
+                    <li>Bar chart of rejection reasons</li>
+                    <li>Per-team breakdown with details</li>
+                    <li>Review anytime via Results button</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <span>[Diagnostics Modal Screenshot]</span>
+            </div>
+        </div>
+
+        <!-- Feature 5: Availability Calendars -->
+        <div class="feature-detail">
+            <div class="feature-content">
+                <h3>Team Member Availability</h3>
+                <p>
+                    Track when each team member is unavailable. Import PTO and vacation dates
+                    from spreadsheets. The scheduler respects availability automatically.
+                </p>
+                <ul>
+                    <li>Per-person unavailable date tracking</li>
+                    <li>CSV import with flexible date formats</li>
+                    <li>Merge or replace existing dates</li>
+                    <li>Warnings when scheduling conflicts</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <span>[Availability Calendar Screenshot]</span>
+            </div>
+        </div>
+
+        <!-- Feature 6: Demand Management -->
+        <div class="feature-detail">
+            <div class="feature-content">
+                <h3>Flexible Demand Patterns</h3>
+                <p>
+                    Define shift demands as fixed quantities or recurring patterns. Recurring
+                    demands automatically adjust when your schedule dates change.
+                </p>
+                <ul>
+                    <li><strong>Fixed Quantity</strong> — exact number of shifts</li>
+                    <li><strong>Every Weekday</strong> — one shift per weekday</li>
+                    <li><strong>N per Week</strong> — specific count per week</li>
+                    <li><strong>Specific Day</strong> — every Monday, first Tuesday, etc.</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <span>[Demand Modal Screenshot]</span>
+            </div>
+        </div>
+
+        <!-- Feature 7: Asset Capabilities -->
+        <div class="feature-detail">
+            <div class="feature-content">
+                <h3>Asset Capabilities</h3>
+                <p>
+                    Tag assets with capabilities like "High Security" or "Equipment X".
+                    Demands can require specific capabilities, and shifts will only be
+                    placed in compatible assets.
+                </p>
+                <ul>
+                    <li>Custom capability tags per asset</li>
+                    <li>Required capabilities on demands</li>
+                    <li>Automatic compatibility filtering</li>
+                    <li>Visual indicators during drag-and-drop</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <span>[Capabilities Screenshot]</span>
+            </div>
+        </div>
+
+        <!-- Feature 8: Import/Export -->
+        <div class="feature-detail">
+            <div class="feature-content">
+                <h3>CSV Import & Export</h3>
+                <p>
+                    Import existing schedules and team availability from spreadsheets.
+                    Export final schedules for sharing or integration with other systems.
+                </p>
+                <ul>
+                    <li>Import schedules with conflict resolution</li>
+                    <li>Import team member availability</li>
+                    <li>Export schedules with all details</li>
+                    <li>Flexible date and name format detection</li>
+                </ul>
+            </div>
+            <div class="feature-image">
+                <span>[Import Wizard Screenshot]</span>
+            </div>
+        </div>
+
+        <!-- Constraints Summary -->
+        <section style="margin-top: 4rem; padding: 3rem 0; border-top: 1px solid var(--border);">
+            <h2 class="section-title">Built-In Constraints</h2>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--text-light);">
+                ShiftGrid enforces rules that spreadsheets can't. These constraints are checked
+                during drag-and-drop and enforced by the auto-scheduler.
+            </p>
+
+            <div class="constraints-grid">
+                <div class="constraint-item">
+                    <strong>Consecutive Day Limits</strong>
+                    <span>Configurable 1-14 day maximum</span>
+                </div>
+                <div class="constraint-item">
+                    <strong>Late-to-Early Protection</strong>
+                    <span>No early shift after a late shift</span>
+                </div>
+                <div class="constraint-item">
+                    <strong>Max Shifts Per Day</strong>
+                    <span>Limit shifts per team per day (1-5)</span>
+                </div>
+                <div class="constraint-item">
+                    <strong>POC Availability</strong>
+                    <span>Minimum team members must be available</span>
+                </div>
+                <div class="constraint-item">
+                    <strong>Asset Compatibility</strong>
+                    <span>Match capabilities to requirements</span>
+                </div>
+                <div class="constraint-item">
+                    <strong>Days of Operation</strong>
+                    <span>Respect asset operating schedules</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <h2>Ready to Try ShiftGrid?</h2>
+            <p>Download now and start your free 14-day trial.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="download.html" class="btn">Download for Windows</a>
+                <a href="pricing.html" class="btn btn-secondary">View Pricing</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShiftGrid.app</p>
+        </div>
+    </footer>
+</body>
+</html>

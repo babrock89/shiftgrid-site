@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Download | ShiftGrid</title>
+    <meta name="description" content="Download ShiftGrid for Windows. Constraint-aware shift scheduling for teams that share limited resources.">
+    <meta property="og:title" content="Download ShiftGrid">
+    <meta property="og:description" content="Download ShiftGrid for Windows. Constraint-aware shift scheduling desktop app.">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="icon.png">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +17,7 @@
             <a href="index.html" class="logo">Shift<span>Grid</span></a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
                 <li><a href="download.html" class="active">Download</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="contact.html">Contact</a></li>
@@ -21,27 +27,54 @@
 
     <main class="container" style="text-align: center;">
         <h1>Download ShiftGrid</h1>
-        <p>Available for Windows 10 and 11.</p>
+        <p>Available for Windows 10 and 11. Free 14-day trial included.</p>
 
-        <div class="card" style="max-width: 500px; margin: 3rem auto;">
-            <div style="background: #dcfce7; color: #166534; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: bold; display: inline-block; margin-bottom: 1rem;">LATEST STABLE</div>
+        <div class="card download-card">
+            <div class="version-badge">LATEST STABLE</div>
             <h2 style="margin: 0;">ShiftGrid v1.0.1</h2>
-            <p style="color: #64748b; font-size: 0.9rem; margin-top: 0.5rem;">Released February 2026</p>
-            
-            <a href="#" class="btn" style="margin-top: 2rem; font-size: 1.1rem;">Download for Windows (.exe)</a>
-            <p style="margin-top: 1rem; font-size: 0.8rem; color: #94a3b8;">Build size: 42MB | SHA-256 Verified</p>
+            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">Released February 2026</p>
+
+            <a href="#" class="btn btn-large" style="margin-top: 2rem;">
+                Download for Windows (.exe)
+            </a>
+            <p class="download-meta">Windows installer (~85 MB)</p>
         </div>
 
-        <section style="text-align: left; margin-top: 4rem;">
+        <section class="requirements">
             <h3>System Requirements</h3>
-            <ul style="margin-left: 1.5rem; margin-top: 1rem; color: #475569;">
+            <ul>
                 <li>Windows 10 or 11 (64-bit)</li>
-                <li>.NET 6.0 Runtime or higher</li>
-                <li>Minimum 4GB RAM</li>
+                <li>4 GB RAM minimum (8 GB recommended)</li>
+                <li>100 MB available disk space</li>
+                <li>No additional runtime required — everything is bundled</li>
             </ul>
+        </section>
+
+        <section style="text-align: left; margin-top: 3rem;">
+            <h3>Installation</h3>
+            <ol style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light);">
+                <li>Download the installer (.exe) from the link above</li>
+                <li>Run the installer and follow the prompts</li>
+                <li>Launch ShiftGrid from your Start menu or desktop shortcut</li>
+                <li>Start your 14-day free trial — no account required</li>
+            </ol>
+        </section>
+
+        
+        <section class="cta-section" style="margin-top: 4rem;">
+            <h2>Need Help Getting Started?</h2>
+            <p>Check out our features page or reach out for support.</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="features.html" class="btn btn-secondary">See Features</a>
+                <a href="contact.html" class="btn">Contact Us</a>
+            </div>
         </section>
     </main>
 
-    <footer><div class="container">&copy; 2026 ShiftGrid.app</div></footer>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ShiftGrid.app</p>
+        </div>
+    </footer>
 </body>
 </html>
