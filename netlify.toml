@@ -5,6 +5,10 @@
 [functions]
   node_bundler = "esbuild"
 
+# Install dependencies from netlify/functions/package.json
+[[plugins]]
+  package = "@netlify/plugin-functions-install-core"
+
 # Redirect for function endpoints
 [[redirects]]
   from = "/api/*"
