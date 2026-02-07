@@ -51,6 +51,7 @@ The actual ShiftGrid application is at: `../lab-scheduler/`
 - [ ] Test mobile responsiveness on all pages
 - [ ] Consider adding Google Analytics or simple analytics
 - [ ] Add the changelog from the repo for the released ShiftGrid software
+- [ ] Add the ability to accept Payment. Not sure how we do this. I am thinking i want payment to go to paypal, but want people to pay how they want to.
 
 ### Future / Nice to Have
 - [ ] Add demo page once web demo is built (link to `/demo/`)
