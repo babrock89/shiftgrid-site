@@ -193,15 +193,21 @@ export async function handler(event) {
       const { licenseKey, licenseId, issuedAt } = generateLicense(customerName, tier, expiryDate);
       const tierName = TIER_NAMES[tier];
 
-      // Store license info in Stripe payment metadata
-      await stripe.checkout.sessions.update(session.id, {
-        metadata: {
-          license_id: licenseId,
-          license_tier: tierName,
-          license_expires: expiryDate,
-          license_issued: issuedAt
+      // Store license info in Stripe payment intent metadata
+      if (session.payment_intent) {
+        try {
+          await stripe.paymentIntents.update(session.payment_intent, {
+            metadata: {
+              license_id: licenseId,
+              license_tier: tierName,
+              license_expires: expiryDate,
+              license_issued: issuedAt
+            }
+          });
+        } catch (metaErr) {
+          console.error('Failed to update Stripe metadata (non-fatal):', metaErr.message);
         }
-      });
+      }
 
       // Send the license email to customer
       await sendLicenseEmail(customerEmail, customerName, tier, licenseKey);
@@ -209,24 +215,28 @@ export async function handler(event) {
       // Send admin notification
       const adminEmail = process.env.ADMIN_EMAIL;
       if (adminEmail) {
-        await resend.emails.send({
-          from: process.env.FROM_EMAIL || 'licenses@shiftgrid.app',
-          to: adminEmail,
-          subject: `New License Sold: ${tierName} - ${customerName}`,
-          html: `
-            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <h2 style="color: #1e3a8a;">New ShiftGrid License Sold</h2>
-              <table style="border-collapse: collapse; width: 100%;">
-                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Customer</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${customerName}</td></tr>
-                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Email</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${customerEmail}</td></tr>
-                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Tier</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${tierName}</td></tr>
-                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">License ID</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-family: monospace;">${licenseId}</td></tr>
-                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Issued</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${issuedAt}</td></tr>
-                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Expires</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${expiryDate}</td></tr>
-              </table>
-            </div>
-          `
-        });
+        try {
+          await resend.emails.send({
+            from: process.env.FROM_EMAIL || 'licenses@shiftgrid.app',
+            to: adminEmail,
+            subject: `New License Sold: ${tierName} - ${customerName}`,
+            html: `
+              <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                <h2 style="color: #1e3a8a;">New ShiftGrid License Sold</h2>
+                <table style="border-collapse: collapse; width: 100%;">
+                  <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Customer</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${customerName}</td></tr>
+                  <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Email</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${customerEmail}</td></tr>
+                  <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Tier</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${tierName}</td></tr>
+                  <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">License ID</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-family: monospace;">${licenseId}</td></tr>
+                  <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Issued</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${issuedAt}</td></tr>
+                  <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Expires</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${expiryDate}</td></tr>
+                </table>
+              </div>
+            `
+          });
+        } catch (notifyErr) {
+          console.error('Failed to send admin notification (non-fatal):', notifyErr.message);
+        }
       }
 
       console.log(`License ${licenseId} sent to ${customerEmail} for tier ${tier}`);
