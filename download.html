@@ -31,10 +31,10 @@
 
         <div class="card download-card">
             <div class="version-badge">LATEST STABLE</div>
-            <h2 style="margin: 0;">ShiftGrid v1.0.1</h2>
-            <p style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;">Released February 2026</p>
+            <h2 id="version-title" style="margin: 0;">ShiftGrid</h2>
+            <p id="release-date" style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;"></p>
 
-            <a href="#" class="btn btn-large" style="margin-top: 2rem;">
+            <a id="download-btn" href="https://github.com/babrock89/shiftgrid-releases/releases/latest/download/ShiftGrid-Setup.exe" class="btn btn-large" style="margin-top: 2rem;">
                 Download for Windows (.exe)
             </a>
             <p class="download-meta">Windows installer (~85 MB)</p>
@@ -60,7 +60,7 @@
             </ol>
         </section>
 
-        
+
         <section class="cta-section" style="margin-top: 4rem;">
             <h2>Need Help Getting Started?</h2>
             <p>Check out our features page or reach out for support.</p>
@@ -76,5 +76,38 @@
             <p>&copy; 2026 ShiftGrid.app</p>
         </div>
     </footer>
+
+    <script>
+        async function fetchLatestRelease() {
+            try {
+                const response = await fetch('https://api.github.com/repos/babrock89/shiftgrid-releases/releases/latest');
+                if (!response.ok) return;
+
+                const release = await response.json();
+
+                // Update version title
+                const versionTitle = document.getElementById('version-title');
+                if (versionTitle && release.tag_name) {
+                    versionTitle.textContent = `ShiftGrid ${release.tag_name}`;
+                }
+
+                // Update release date
+                const releaseDate = document.getElementById('release-date');
+                if (releaseDate && release.published_at) {
+                    const date = new Date(release.published_at);
+                    const formatted = date.toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'long'
+                    });
+                    releaseDate.textContent = `Released ${formatted}`;
+                }
+            } catch (error) {
+                // Silently fail - the page works fine without dynamic version
+                console.log('Could not fetch release info');
+            }
+        }
+
+        fetchLatestRelease();
+    </script>
 </body>
 </html>

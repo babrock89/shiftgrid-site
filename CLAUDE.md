@@ -50,6 +50,7 @@ The actual ShiftGrid application is at: `../lab-scheduler/`
 - [ ] Add logo to header (optional, text logo works fine)
 - [ ] Test mobile responsiveness on all pages
 - [ ] Consider adding Google Analytics or simple analytics
+- [ ] Add the changelog from the repo for the released ShiftGrid software
 
 ### Future / Nice to Have
 - [ ] Add demo page once web demo is built (link to `/demo/`)

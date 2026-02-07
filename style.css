@@ -300,6 +300,26 @@ h4 {
     }
 }
 
+.pricing-grid-4 {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+    .pricing-grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1000px) {
+    .pricing-grid-4 {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
 .pricing-card {
     border: 1px solid var(--border);
     padding: 2rem;
@@ -362,6 +382,70 @@ h4 {
 }
 
 /* --- FEATURES PAGE --- */
+.feature-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.feature-section:last-of-type {
+    border-bottom: none;
+}
+
+@media (min-width: 768px) {
+    .feature-section {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+    }
+
+    .feature-section:nth-child(odd) .feature-screenshot {
+        order: 2;
+    }
+}
+
+.feature-screenshot {
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.feature-screenshot img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.feature-screenshot img[src$=".png"]:not([src^="http"]) {
+    /* Placeholder styling when image doesn't load */
+}
+
+.feature-info h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.feature-info > p {
+    color: var(--text-light);
+    margin-bottom: 1rem;
+}
+
+.feature-info ul {
+    margin-left: 1.25rem;
+    color: var(--text-light);
+}
+
+.feature-info li {
+    margin-bottom: 0.5rem;
+}
+
+/* Legacy feature-detail (keep for backwards compat) */
 .feature-detail {
     display: grid;
     grid-template-columns: 1fr;
@@ -503,6 +587,54 @@ footer a {
 
 footer a:hover {
     color: var(--primary);
+}
+
+/* --- LIGHTBOX --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.lightbox-close:hover {
+    color: var(--primary);
+}
+
+.feature-screenshot {
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.feature-screenshot:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* --- UTILITY --- */
