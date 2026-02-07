@@ -31,16 +31,20 @@ function generateUUID() {
 }
 
 // Generate a signed license key (same logic as generate-license.cjs)
+// Returns { licenseKey, licenseId, issuedAt } for tracking
 function generateLicense(name, tier, expiryDate) {
   // Decode the base64-encoded PEM key from the environment variable
   const privateKey = Buffer.from(process.env.LICENSE_PRIVATE_KEY, 'base64').toString('utf-8');
+
+  const licenseId = generateUUID();
+  const issuedAt = new Date().toISOString().split('T')[0];
 
   const payload = {
     licensee: name,
     tier: tier,
     expiresAt: expiryDate,
-    issuedAt: new Date().toISOString().split('T')[0],
-    licenseId: generateUUID()
+    issuedAt: issuedAt,
+    licenseId: licenseId
   };
 
   const payloadB64 = Buffer.from(JSON.stringify(payload)).toString('base64');
@@ -54,7 +58,11 @@ function generateLicense(name, tier, expiryDate) {
     signature: signature
   };
 
-  return Buffer.from(JSON.stringify(license)).toString('base64');
+  return {
+    licenseKey: Buffer.from(JSON.stringify(license)).toString('base64'),
+    licenseId: licenseId,
+    issuedAt: issuedAt
+  };
 }
 
 // Calculate expiry date (1 year from now)
@@ -182,12 +190,46 @@ export async function handler(event) {
 
       // Generate the license
       const expiryDate = getExpiryDate();
-      const licenseKey = generateLicense(customerName, tier, expiryDate);
+      const { licenseKey, licenseId, issuedAt } = generateLicense(customerName, tier, expiryDate);
+      const tierName = TIER_NAMES[tier];
 
-      // Send the license email
+      // Store license info in Stripe payment metadata
+      await stripe.checkout.sessions.update(session.id, {
+        metadata: {
+          license_id: licenseId,
+          license_tier: tierName,
+          license_expires: expiryDate,
+          license_issued: issuedAt
+        }
+      });
+
+      // Send the license email to customer
       await sendLicenseEmail(customerEmail, customerName, tier, licenseKey);
 
-      console.log(`License sent to ${customerEmail} for tier ${tier}`);
+      // Send admin notification
+      const adminEmail = process.env.ADMIN_EMAIL;
+      if (adminEmail) {
+        await resend.emails.send({
+          from: process.env.FROM_EMAIL || 'licenses@shiftgrid.app',
+          to: adminEmail,
+          subject: `New License Sold: ${tierName} - ${customerName}`,
+          html: `
+            <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+              <h2 style="color: #1e3a8a;">New ShiftGrid License Sold</h2>
+              <table style="border-collapse: collapse; width: 100%;">
+                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Customer</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${customerName}</td></tr>
+                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Email</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${customerEmail}</td></tr>
+                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Tier</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${tierName}</td></tr>
+                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">License ID</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-family: monospace;">${licenseId}</td></tr>
+                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Issued</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${issuedAt}</td></tr>
+                <tr><td style="padding: 8px; border-bottom: 1px solid #e2e8f0; font-weight: bold;">Expires</td><td style="padding: 8px; border-bottom: 1px solid #e2e8f0;">${expiryDate}</td></tr>
+              </table>
+            </div>
+          `
+        });
+      }
+
+      console.log(`License ${licenseId} sent to ${customerEmail} for tier ${tier}`);
 
       return { statusCode: 200, body: JSON.stringify({ received: true }) };
 
