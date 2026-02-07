@@ -71,28 +71,30 @@ async function sendLicenseEmail(email, name, tier, licenseKey) {
   await resend.emails.send({
     from: process.env.FROM_EMAIL || 'licenses@shiftgrid.app',
     to: email,
-    subject: `Your ShiftGrid ${tierName} License Key`,
+    subject: `Your ShiftGrid ${tierName} License`,
+    attachments: [
+      {
+        filename: 'shiftgrid-license.lic',
+        content: Buffer.from(licenseKey).toString('base64'),
+        type: 'application/octet-stream'
+      }
+    ],
     html: `
       <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
         <h1 style="color: #1e3a8a;">Thank you for purchasing ShiftGrid!</h1>
 
         <p>Hi ${name},</p>
 
-        <p>Thank you for your purchase of ShiftGrid <strong>${tierName}</strong>. Your license key is ready!</p>
-
-        <h2 style="color: #334155;">Your License Key</h2>
-
-        <div style="background: #f1f5f9; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; margin: 20px 0; word-break: break-all; font-family: monospace; font-size: 12px;">
-          ${licenseKey}
-        </div>
+        <p>Thank you for your purchase of ShiftGrid <strong>${tierName}</strong>. Your license file is attached to this email.</p>
 
         <h2 style="color: #334155;">How to Activate</h2>
 
         <ol style="color: #475569; line-height: 1.8;">
+          <li>Save the attached <strong>shiftgrid-license.lic</strong> file to your computer</li>
           <li>Open ShiftGrid</li>
-          <li>Go to <strong>Help → Enter License Key</strong></li>
-          <li>Paste the license key above</li>
-          <li>Click <strong>Activate</strong></li>
+          <li>Click <strong>License</strong> in the bottom left</li>
+          <li>Click <strong>Update License</strong></li>
+          <li>Select the <strong>shiftgrid-license.lic</strong> file</li>
         </ol>
 
         <p style="color: #475569;">Your license is valid for one year from today and includes all updates during that period.</p>
@@ -114,16 +116,14 @@ Thank you for purchasing ShiftGrid!
 
 Hi ${name},
 
-Thank you for your purchase of ShiftGrid ${tierName}. Your license key is ready!
-
-YOUR LICENSE KEY:
-${licenseKey}
+Thank you for your purchase of ShiftGrid ${tierName}. Your license file is attached to this email.
 
 HOW TO ACTIVATE:
-1. Open ShiftGrid
-2. Go to Help → Enter License Key
-3. Paste the license key above
-4. Click Activate
+1. Save the attached shiftgrid-license.lic file to your computer
+2. Open ShiftGrid
+3. Click License in the bottom left
+4. Click Update License
+5. Select the shiftgrid-license.lic file
 
 Your license is valid for one year from today and includes all updates during that period.
 
