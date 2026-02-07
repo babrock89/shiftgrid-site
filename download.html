@@ -35,7 +35,7 @@
             <h2 id="version-title" style="margin: 0;">ShiftGrid</h2>
             <p id="release-date" style="color: var(--text-light); font-size: 0.9rem; margin-top: 0.5rem;"></p>
 
-            <a id="download-btn" href="https://github.com/babrock89/shiftgrid-releases/releases/latest/download/ShiftGrid-Setup.exe" class="btn btn-large" style="margin-top: 2rem;">
+            <a id="download-btn" href="https://github.com/babrock89/shiftgrid-releases/releases/latest" class="btn btn-large" style="margin-top: 2rem;">
                 Download for Windows (.exe)
             </a>
             <p class="download-meta">Windows installer (~85 MB)</p>
@@ -101,6 +101,15 @@
                         month: 'long'
                     });
                     releaseDate.textContent = `Released ${formatted}`;
+                }
+
+                // Update download button URL to the actual .exe asset
+                const downloadBtn = document.getElementById('download-btn');
+                if (downloadBtn && release.assets) {
+                    const exeAsset = release.assets.find(a => a.name.endsWith('.exe'));
+                    if (exeAsset) {
+                        downloadBtn.href = exeAsset.browser_download_url;
+                    }
                 }
             } catch (error) {
                 // Silently fail - the page works fine without dynamic version
