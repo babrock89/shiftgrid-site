@@ -286,19 +286,11 @@
             const container = document.getElementById('manual-content');
 
             try {
-                // Get the latest release to find the manual asset
-                const releaseResponse = await fetch(`https://api.github.com/repos/${REPO}/releases/latest`);
-                if (!releaseResponse.ok) throw new Error('Failed to fetch release');
+                // Fetch MANUAL.md from the repo's main branch (supports CORS)
+                const response = await fetch(`https://raw.githubusercontent.com/${REPO}/main/MANUAL.md`);
 
-                const release = await releaseResponse.json();
-
-                // Find MANUAL.md in the release assets
-                const manualAsset = release.assets.find(asset =>
-                    asset.name.toLowerCase() === 'manual.md'
-                );
-
-                if (!manualAsset) {
-                    // If no manual asset found, show a placeholder
+                if (!response.ok) {
+                    // If not found, show a placeholder
                     container.innerHTML = `
                         <div class="manual-content">
                             <h2>Getting Started</h2>
@@ -318,11 +310,7 @@
                     return;
                 }
 
-                // Fetch the manual content from the asset download URL
-                const manualResponse = await fetch(manualAsset.browser_download_url);
-                if (!manualResponse.ok) throw new Error('Failed to fetch manual content');
-
-                const markdown = await manualResponse.text();
+                const markdown = await response.text();
                 container.innerHTML = `<div class="manual-content">${markdownToHtml(markdown)}</div>`;
             } catch (error) {
                 console.error('Error fetching manual:', error);
