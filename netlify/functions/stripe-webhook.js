@@ -32,7 +32,8 @@ function generateUUID() {
 
 // Generate a signed license key (same logic as generate-license.cjs)
 function generateLicense(name, tier, expiryDate) {
-  const privateKey = process.env.LICENSE_PRIVATE_KEY.replace(/\\n/g, '\n');
+  // Decode the base64-encoded PEM key from the environment variable
+  const privateKey = Buffer.from(process.env.LICENSE_PRIVATE_KEY, 'base64').toString('utf-8');
 
   const payload = {
     licensee: name,
