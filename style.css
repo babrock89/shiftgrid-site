@@ -536,6 +536,51 @@ h4 {
     margin-bottom: 0.5rem;
 }
 
+/* --- EMAIL CAPTURE --- */
+.email-capture {
+    max-width: 500px;
+    margin: 2rem auto 0;
+    padding: 1.5rem 2rem;
+    background: var(--light-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    text-align: center;
+}
+
+.email-capture-form {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.email-capture-form input {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.email-capture-form input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.email-capture-form .btn {
+    padding: 0.7rem 1.25rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border: none;
+    cursor: pointer;
+}
+
+@media (max-width: 480px) {
+    .email-capture-form {
+        flex-direction: column;
+    }
+}
+
 /* --- CONTACT FORM --- */
 .contact-form {
     display: flex;
